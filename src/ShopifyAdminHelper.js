@@ -1,5 +1,9 @@
+import SalesChannelNav from './SalesChannelNav';
+
 export default class ShopifyAdminHelper {
   constructor() {
-    console.log('SAH Loads up');
+    console.log('Shopify Admin Helper is loading');
+
+    new SalesChannelNav();
   }
 }
