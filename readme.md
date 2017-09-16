@@ -7,3 +7,6 @@
   - Internet Explorer: Unsupported
 - Install user script
   - After installing browser extension, go [index.user.js](../../raw/master/dist/index.user.js) and click *Install*.
+  
+# TODO:
+- Prevent script loading on front end

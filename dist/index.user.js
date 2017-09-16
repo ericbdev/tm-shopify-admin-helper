@@ -5,7 +5,7 @@
 // @namespace       sah
 // @description     Enhances Shopify's admin panel for developers
 // @downloadURL     https://github.com/ericbdev/tm-shopify-admin-helper/raw/master/dist/index.user.js
-// @match           https://*.myshopify.com/admin
+// @match           https://*.myshopify.com/admin/*
 // ==/UserScript==
 
 (function () {
@@ -33,6 +33,32 @@ var createClass = function () {
     if (staticProps) defineProperties(Constructor, staticProps);
     return Constructor;
   };
+}();
+
+var Locations = function () {
+  function Locations() {
+    classCallCheck(this, Locations);
+
+    this.location = window.location;
+    this.pathname = this.location.pathname;
+    this.page = this.pathname.replace('/admin/', '');
+
+    console.log(this.location);
+    console.log(this.pathname);
+  }
+
+  createClass(Locations, [{
+    key: 'getPage',
+    value: function getPage() {
+      return this.page;
+    }
+  }, {
+    key: 'isPage',
+    value: function isPage(page) {
+      return page === this.page;
+    }
+  }]);
+  return Locations;
 }();
 
 /**
@@ -63,13 +89,36 @@ var SalesChannelNav = function () {
   return SalesChannelNav;
 }();
 
-var ShopifyAdminHelper = function ShopifyAdminHelper() {
-  classCallCheck(this, ShopifyAdminHelper);
+var Themes = function Themes() {
+  classCallCheck(this, Themes);
 
-  console.log('Shopify Admin Helper is loading');
-
-  new SalesChannelNav();
+  console.log('Todo: Enhance themes list');
 };
+
+var ShopifyAdminHelper = function () {
+  function ShopifyAdminHelper() {
+    classCallCheck(this, ShopifyAdminHelper);
+
+    this.locations = new Locations();
+
+    this._init();
+  }
+
+  createClass(ShopifyAdminHelper, [{
+    key: '_init',
+    value: function _init() {
+      new SalesChannelNav();
+
+      console.log(this.locations.getPage());
+
+      // Pages
+      if (this.locations.isPage('themes')) {
+        new Themes();
+      }
+    }
+  }]);
+  return ShopifyAdminHelper;
+}();
 
 new ShopifyAdminHelper();
 
