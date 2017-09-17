@@ -12,8 +12,6 @@ export default class ShopifyAdminHelper {
   _init() {
     new SalesChannelNav();
 
-    console.log(this.locations.getPage());
-
     // Pages
     if (this.locations.isPage('themes')) {
       new Themes();
