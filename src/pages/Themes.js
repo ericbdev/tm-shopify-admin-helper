@@ -33,7 +33,7 @@ export default class Themes {
       }
 
       // Theme names match, order by ID
-      // TODO: Test this doesn't break everything
+      // TODO: Prefer sort by last updated.
       if (nameA === nameB) {
         if (a.id < b.id) {
           return -1;

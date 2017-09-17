@@ -125,7 +125,7 @@ var Themes = function () {
         }
 
         // Theme names match, order by ID
-        // TODO: Test this doesn't break everything
+        // TODO: Prefer sort by last updated.
         if (nameA === nameB) {
           if (a.id < b.id) {
             return -1;
@@ -191,17 +191,18 @@ var ShopifyAdminHelper = function () {
   function ShopifyAdminHelper() {
     classCallCheck(this, ShopifyAdminHelper);
 
-    this.locations = new Locations();
+    this.init = this._init.bind(this);
 
-    this._init();
+    document.addEventListener('page:update', this.init);
   }
 
   createClass(ShopifyAdminHelper, [{
     key: '_init',
     value: function _init() {
+      this.locations = new Locations();
       new SalesChannelNav();
 
-      // Pages
+      //Pages
       if (this.locations.isPage('themes')) {
         new Themes();
       }

@@ -4,15 +4,16 @@ import Themes from './pages/Themes';
 
 export default class ShopifyAdminHelper {
   constructor() {
-    this.locations = new Locations();
+    this.init = this._init.bind(this);
 
-    this._init();
+    document.addEventListener('page:update', this.init);
   }
 
   _init() {
+    this.locations = new Locations();
     new SalesChannelNav();
 
-    // Pages
+    //Pages
     if (this.locations.isPage('themes')) {
       new Themes();
     }

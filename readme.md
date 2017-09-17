@@ -10,3 +10,8 @@
   
 # TODO:
 - Prevent script loading on front end
+  - HACK: Script doesn't fully initiate on front end
+- Add in additional theme information
+  - Date last updated
+  - Date created
+  - Sort themes of same name by last updated
