@@ -1,10 +1,10 @@
 export default class Themes {
   constructor() {
-    this.themesIndex = document.querySelector('#themes-index');
+    this.themesList = document.querySelector('.themes-list');
     this.themesListHeader = null;
     this.themes = [];
 
-    if (!this.themesIndex) {
+    if (!this.themesList) {
       return;
     }
 
@@ -16,7 +16,7 @@ export default class Themes {
   }
 
   _getThemeName(themeEl) {
-    return themeEl.querySelector('.themes-list__info a').innerText;
+    return themeEl.querySelector('.themes-list__theme-title').innerText;
   }
 
   _orderThemes() {
@@ -57,7 +57,6 @@ export default class Themes {
   }
 
   _init() {
-    this.themesList = this.themesIndex.querySelector('.themes-list');
     this.themesListInner = this.themesList.querySelectorAll('.themes-list__row');
 
     this.themesListInner.forEach((el, index) => {

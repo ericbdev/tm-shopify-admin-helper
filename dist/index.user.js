@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Shopify Admin Helper
-// @version         0.0.1
+// @version         1.0.0
 // @author          ericbdev
 // @namespace       sah
 // @description     Enhances Shopify's admin panel for developers
@@ -88,11 +88,11 @@ var Themes = function () {
   function Themes() {
     classCallCheck(this, Themes);
 
-    this.themesIndex = document.querySelector('#themes-index');
+    this.themesList = document.querySelector('.themes-list');
     this.themesListHeader = null;
     this.themes = [];
 
-    if (!this.themesIndex) {
+    if (!this.themesList) {
       return;
     }
 
@@ -107,7 +107,7 @@ var Themes = function () {
   }, {
     key: '_getThemeName',
     value: function _getThemeName(themeEl) {
-      return themeEl.querySelector('.themes-list__info a').innerText;
+      return themeEl.querySelector('.themes-list__theme-title').innerText;
     }
   }, {
     key: '_orderThemes',
@@ -153,7 +153,6 @@ var Themes = function () {
     value: function _init() {
       var _this = this;
 
-      this.themesList = this.themesIndex.querySelector('.themes-list');
       this.themesListInner = this.themesList.querySelectorAll('.themes-list__row');
 
       this.themesListInner.forEach(function (el, index) {
