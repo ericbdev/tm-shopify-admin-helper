@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Shopify Admin Helper
-// @version         1.0.0
+// @version         1.0.1
 // @author          ericbdev
 // @namespace       sah
 // @description     Enhances Shopify's admin panel for developers
