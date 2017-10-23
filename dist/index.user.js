@@ -146,7 +146,8 @@ var Themes = function () {
 
       var id = this._getThemeID(themeEl);
       var name = this._getThemeName(listTitle);
-      var titleText = name + '<br/>Theme ID: <span style="font-weight: normal;">' + id + '</span> ';
+      var idText = '<span style="font-size: 0.9em">Theme ID: <span style="font-weight: normal;">' + id + '</span></span>';
+      var titleText = name + '<br/>' + idText;
 
       listTitle.innerHTML = titleText;
 

@@ -53,7 +53,8 @@ export default class Themes {
 
     const id = this._getThemeID(themeEl);
     const name = this._getThemeName(listTitle);
-    const titleText = `${name}<br/>Theme ID: <span style="font-weight: normal;">${id}</span> `;
+    const idText = `<span style="font-size: 0.9em">Theme ID: <span style="font-weight: normal;">${id}</span></span>`;
+    const titleText = `${name}<br/>${idText}`;
 
     listTitle.innerHTML = titleText;
 
