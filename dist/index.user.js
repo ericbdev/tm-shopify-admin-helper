@@ -106,8 +106,8 @@ var Themes = function () {
     }
   }, {
     key: '_getThemeName',
-    value: function _getThemeName(themeEl) {
-      return themeEl.querySelector('.themes-list__theme-title').innerText;
+    value: function _getThemeName(listTitle) {
+      return listTitle.innerText;
     }
   }, {
     key: '_orderThemes',
@@ -142,6 +142,14 @@ var Themes = function () {
   }, {
     key: '_organiseTheme',
     value: function _organiseTheme(themeEl) {
+      var listTitle = themeEl.querySelector('.themes-list__theme-title');
+
+      var id = this._getThemeID(themeEl);
+      var name = this._getThemeName(listTitle);
+      var titleText = name + '<br/>Theme ID: <span style="font-weight: normal;">' + id + '</span> ';
+
+      listTitle.innerHTML = titleText;
+
       return {
         el: themeEl,
         id: this._getThemeID(themeEl),
