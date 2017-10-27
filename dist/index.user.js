@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Shopify Admin Helper
-// @version         1.0.2
+// @version         1.0.3
 // @author          ericbdev
 // @namespace       sah
 // @description     Enhances Shopify's admin panel for developers
@@ -104,10 +104,27 @@ var Themes = function () {
     value: function _getThemeID(themeEl) {
       return themeEl.id.replace('theme_', '');
     }
+
+    /**
+     * Get the theme name form title element, or get stored element
+     * @param titleEl
+     * @returns {string}
+     * @private
+     */
+
   }, {
     key: '_getThemeName',
-    value: function _getThemeName(listTitle) {
-      return listTitle.innerText;
+    value: function _getThemeName(titleEl) {
+      var dataTag = 'data-theme-title';
+      var currentTitle = titleEl.innerText;
+      var storedTitle = titleEl.getAttribute(dataTag);
+
+      if (!storedTitle) {
+        titleEl.setAttribute(dataTag, currentTitle);
+        return currentTitle;
+      } else {
+        return storedTitle;
+      }
     }
   }, {
     key: '_orderThemes',
@@ -142,14 +159,13 @@ var Themes = function () {
   }, {
     key: '_organiseTheme',
     value: function _organiseTheme(themeEl) {
-      var listTitle = themeEl.querySelector('.themes-list__theme-title');
+      var titleEl = themeEl.querySelector('.themes-list__theme-title');
 
       var id = this._getThemeID(themeEl);
-      var name = this._getThemeName(listTitle);
+      var name = this._getThemeName(titleEl);
       var idText = '<span style="font-size: 0.9em">Theme ID: <span style="font-weight: normal;">' + id + '</span></span>';
-      var titleText = name + '<br/>' + idText;
 
-      listTitle.innerHTML = titleText;
+      titleEl.innerHTML = name + '<br/>' + idText;
 
       return {
         el: themeEl,
