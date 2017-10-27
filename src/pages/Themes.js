@@ -15,8 +15,23 @@ export default class Themes {
     return themeEl.id.replace('theme_', '');
   }
 
-  _getThemeName(listTitle) {
-    return listTitle.innerText;
+  /**
+   * Get the theme name form title element, or get stored element
+   * @param titleEl
+   * @returns {string}
+   * @private
+   */
+  _getThemeName(titleEl) {
+    const dataTag = 'data-theme-title';
+    const currentTitle = titleEl.innerText;
+    const storedTitle = titleEl.getAttribute(dataTag);
+
+    if (!storedTitle) {
+      titleEl.setAttribute(dataTag, currentTitle);
+      return currentTitle;
+    } else {
+      return storedTitle;
+    }
   }
 
   _orderThemes() {
@@ -49,14 +64,13 @@ export default class Themes {
   }
 
   _organiseTheme(themeEl) {
-    const listTitle = themeEl.querySelector('.themes-list__theme-title');
+    const titleEl = themeEl.querySelector('.themes-list__theme-title');
 
     const id = this._getThemeID(themeEl);
-    const name = this._getThemeName(listTitle);
+    const name = this._getThemeName(titleEl);
     const idText = `<span style="font-size: 0.9em">Theme ID: <span style="font-weight: normal;">${id}</span></span>`;
-    const titleText = `${name}<br/>${idText}`;
 
-    listTitle.innerHTML = titleText;
+    titleEl.innerHTML = `${name}<br/>${idText}`;
 
     return {
       el: themeEl,
