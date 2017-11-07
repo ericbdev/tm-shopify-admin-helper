@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+##[ 1.0.4 ] - [2017-11-07]
+### Fixed
+- Fix broken 'Online store' menu selector
+
 ##[ 1.0.3 ] - [2017-10-27]
 ### Added
 - Remove duplication of theme id in theme title on theme list change

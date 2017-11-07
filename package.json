@@ -1,6 +1,6 @@
 {
   "name": "shopify-admin-helper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Enhances Shopify's admin panel for developers",
   "main": "index.user.js",
   "author": "ericbdev",
