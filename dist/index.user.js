@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Shopify Admin Helper
-// @version         1.0.3
+// @version         1.0.4
 // @author          ericbdev
 // @namespace       sah
 // @description     Enhances Shopify's admin panel for developers
@@ -65,7 +65,8 @@ var SalesChannelNav = function () {
   function SalesChannelNav() {
     classCallCheck(this, SalesChannelNav);
 
-    this.onlineStore = document.querySelector('[data-app-nav-container-for="online_store"]');
+    this.onlineStoreLink = document.querySelector('a[href="/admin/themes"].ui-nav__link');
+    this.onlineStore = this.onlineStoreLink.parentNode;
 
     if (!this.onlineStore) {
       return console.warn('No \'Online Store\' menu found');
