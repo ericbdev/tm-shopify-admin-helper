@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+##[ 1.0.5 ] - [2018-04-13]
+### Changed
+- Added in catch for "Online store" link locator
+  - This functionality is now deprecated, it appears Shopify is moving
+    towards to generated class names, and asynchronous components, so
+    the availability of this sub menu is now in question
+
 ##[ 1.0.4 ] - [2017-11-07]
 ### Fixed
 - Fix broken 'Online store' menu selector
